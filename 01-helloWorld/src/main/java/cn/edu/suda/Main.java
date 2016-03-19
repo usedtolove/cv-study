@@ -17,7 +17,7 @@ public class Main extends Application {
 		try {
 			BorderPane root = FXMLLoader.load(getClass().getResource("Demo.fxml"));
 			Scene scene = new Scene(root,400,400);
-			primaryStage.setTitle("JavaFX meets OpenCV");
+			primaryStage.setTitle("JavaFX OpenCV Demo");
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {

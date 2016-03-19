@@ -45,6 +45,7 @@ public class DemoController {
             // is the video stream available?
             if (this.capture.isOpened()) {
                 this.cameraActive = true;
+                this.currentFrame.setVisible(true);
 
                 // grab a frame every 33 ms (30 frames/sec)
                 Runnable frameGrabber = new Runnable() {
@@ -68,7 +69,6 @@ public class DemoController {
             this.cameraActive = false;
             // update again the button content
             this.btnStart.setText("Start Camera");
-
             // stop the timer
             try {
                 this.timer.shutdown();
@@ -77,11 +77,11 @@ public class DemoController {
                 // log the exception
                 System.err.println("Exception in stopping the frame capture, trying to release the camera now... " + e);
             }
-
             // release the camera
             this.capture.release();
             // clean the frame
             this.currentFrame.setImage(null);
+            this.currentFrame.setVisible(false);
         }
 
     }
@@ -101,21 +101,18 @@ public class DemoController {
             try {
                 // read the current frame
                 this.capture.read(frame);
-
                 // if the frame is not empty, process it
                 if (!frame.empty()) {
-                    // convert the image to gray scale
-                    Imgproc.cvtColor(frame, frame, Imgproc.COLOR_BGR2GRAY);
+                    // convert the image to RGB scale
+                    Imgproc.cvtColor(frame, frame, Imgproc.COLOR_BGR2RGB);
                     // convert the Mat object (OpenCV) to Image (JavaFX)
                     imageToShow = mat2Image(frame);
                 }
-
             } catch (Exception e) {
                 // log the error
                 System.err.println("Exception during the image elaboration: " + e);
             }
         }
-
         return imageToShow;
     }
 
