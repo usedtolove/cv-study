@@ -3,9 +3,10 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.tz.train</groupId>
-    <artifactId>javaCV-hello</artifactId>
+    <groupId>cn.edu.suda</groupId>
+    <artifactId>javaCV-helloWorld</artifactId>
     <version>1.0</version>
+    <description>use openCV(java) connect camera</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -13,21 +14,39 @@
     </properties>
 
     <dependencies>
+        <!--compile-->
         <dependency>
-            <groupId>org.bytedeco</groupId>
-            <artifactId>javacv</artifactId>
-            <version>1.1</version>
+            <groupId>itseez</groupId>
+            <artifactId>opencv-java</artifactId>
+            <version>310</version>
         </dependency>
+        <dependency>
+            <groupId>org.codehaus.groovy</groupId>
+            <artifactId>groovy-all</artifactId>
+            <version>2.4.6</version>
+        </dependency>
+        <!--test-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
     <build>
         <plugins>
-
+            <plugin>
+                <!--maven-compiler-plugin-->
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
             <plugin>
                 <!--maven-dependency-plugin-->
                 <groupId>org.apache.maven.plugins</groupId>
@@ -41,6 +60,8 @@
                             <goal>copy-dependencies</goal>
                         </goals>
                         <configuration>
+                            <!--<excludeScope>test</excludeScope>-->
+                            <includeScope>runtime</includeScope>
                             <outputDirectory>${project.build.directory}/lib</outputDirectory>
                             <overWriteReleases>false</overWriteReleases>
                             <overWriteSnapshots>false</overWriteSnapshots>
@@ -59,7 +80,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>com.tz.Demo</mainClass>
+                            <mainClass>cn.edu.suda.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
