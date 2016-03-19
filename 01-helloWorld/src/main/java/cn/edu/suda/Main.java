@@ -7,7 +7,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import org.opencv.core.Core;
 
-
+/**
+ * 主程序
+ */
 public class Main extends Application {
 	
 	@Override
@@ -22,7 +24,10 @@ public class Main extends Application {
 			e.printStackTrace();
 		}
 	}
-	
+
+    /**
+     *  主函数
+     */
 	public static void main(String[] args) {
 		System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
 		launch(args);
