@@ -1,3 +1,7 @@
+#dll
+**/*.dll
+!/opencv_java310.dll
+
 # gradle #
 **/taskArtifacts
 .gradle

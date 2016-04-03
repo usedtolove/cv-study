@@ -22,8 +22,9 @@ public class MatTest {
         Mat image2 = new Mat(new Size(680,480), CvType.CV_8UC3);
         System.out.println(image2);
 
-        Mat image3 = new Mat(new Size(3,3), CvType.CV_8UC3, new Scalar(new double[]{128,0,255}));
-        System.out.println(image3.dump());
+        Mat image3 = new Mat(new Size(680,480), CvType.CV_8UC3, new Scalar(new double[]{128,0,255}));
+        System.out.println(image3.dataAddr()); //取地址很快
+//        System.out.println(image3.dump()); //打印数据，Java和C++都很慢
     }
 
     @Test
